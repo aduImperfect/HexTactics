@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://fsbb8aavwynv"]
+
+[ext_resource type="Texture2D" uid="uid://y4he1y2q2p70" path="res://Textures/HexWall.png" id="1_ngvsy"]
+
+[node name="Wall" type="Node2D" unique_id=1567789792]
+
+[node name="HexWall" type="Sprite2D" parent="." unique_id=657388028]
+z_index = 5
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ngvsy")

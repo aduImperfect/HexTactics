@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://3g6l7vlaqn48"]
+
+[ext_resource type="Script" uid="uid://jo6lvx5856oc" path="res://TSCN/hex_gen.gd" id="1_fmnqs"]
+[ext_resource type="Script" uid="uid://co45mwwqbqbh3" path="res://TSCN/collision_mgr.gd" id="2_s5wa2"]
+[ext_resource type="Script" uid="uid://ck7vmnvrf1vl3" path="res://TSCN/hex_calculations.gd" id="3_odqrj"]
+[ext_resource type="Script" uid="uid://do3xt8vkvnx2j" path="res://TSCN/player_movement.gd" id="4_gtjxt"]
+[ext_resource type="Script" uid="uid://si6ggkfim2jj" path="res://TSCN/mouse_controls.gd" id="5_p3t1g"]
+
+[node name="Node2D" type="Node2D" unique_id=424307333]
+
+[node name="HexGen" type="Node2D" parent="." unique_id=1184350057 node_paths=PackedStringArray("hexCalculationsNode")]
+script = ExtResource("1_fmnqs")
+hexCalculationsNode = NodePath("../HexCalculations")
+
+[node name="CollisionMgr" type="Node2D" parent="." unique_id=1121681037 node_paths=PackedStringArray("hexGenNode", "hexCalculationsNode")]
+script = ExtResource("2_s5wa2")
+hexGenNode = NodePath("../HexGen")
+hexCalculationsNode = NodePath("../HexCalculations")
+
+[node name="HexCalculations" type="Node2D" parent="." unique_id=253071523]
+script = ExtResource("3_odqrj")
+
+[node name="PlayerMovement" type="Node2D" parent="." unique_id=85803700 node_paths=PackedStringArray("hexGenNode", "hexCalculationsNode", "hexCollisionsNode")]
+script = ExtResource("4_gtjxt")
+hexGenNode = NodePath("../HexGen")
+hexCalculationsNode = NodePath("../HexCalculations")
+hexCollisionsNode = NodePath("../CollisionMgr")
+
+[node name="MouseControls" type="Node2D" parent="." unique_id=434577718 node_paths=PackedStringArray("hexGenNode", "hexCalculationsNode")]
+script = ExtResource("5_p3t1g")
+hexGenNode = NodePath("../HexGen")
+hexCalculationsNode = NodePath("../HexCalculations")

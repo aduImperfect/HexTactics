@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://7yqeseyxwjpc"]
+
+[ext_resource type="Texture2D" uid="uid://0ddnbla1slsc" path="res://Textures/HexPath.png" id="1_lh1ub"]
+
+[node name="Path" type="Node2D" unique_id=1117685794]
+
+[node name="HexPath" type="Sprite2D" parent="." unique_id=1038912192]
+z_index = -5
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_lh1ub")

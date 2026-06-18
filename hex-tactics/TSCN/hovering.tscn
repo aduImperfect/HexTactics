@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dboc7eg04trp3"]
+
+[ext_resource type="Texture2D" uid="uid://su02rfttrock" path="res://Textures/HexHovering.png" id="1_67sec"]
+
+[node name="Hovering" type="Node2D" unique_id=407335817]
+
+[node name="HexHover" type="Sprite2D" parent="." unique_id=1880909458]
+z_index = -4
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_67sec")

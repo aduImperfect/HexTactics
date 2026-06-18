@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://4xnn0gfi3f3n"]
+
+[ext_resource type="Texture2D" uid="uid://bxn2tocdcyofg" path="res://Textures/HexClicked2.png" id="1_ey4ea"]
+
+[node name="Clicked2" type="Node2D" unique_id=1178507154]
+
+[node name="HexClicked2" type="Sprite2D" parent="." unique_id=1604516107]
+z_index = -2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_ey4ea")

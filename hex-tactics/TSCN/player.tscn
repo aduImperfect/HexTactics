@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://ds61ytngm88s4"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2utqp"]
+load_path = "res://.godot/imported/HexPlayer.png-4fb0ef79db5eacef955aa48b2d4596bc.ctex"
+
+[node name="Player" type="Node2D" unique_id=1080727280]
+
+[node name="HexPlayer" type="Sprite2D" parent="." unique_id=1355311012]
+z_index = 3
+scale = Vector2(0.05, 0.05)
+texture = SubResource("CompressedTexture2D_2utqp")
