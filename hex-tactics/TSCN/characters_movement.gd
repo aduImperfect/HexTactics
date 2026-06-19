@@ -85,15 +85,15 @@ func _process(_delta: float) -> void:
 	if stopGame == true:
 		return
 #
-	#_char_input_action()
-	#
+	_char_input_action()
+
 	#if _check_move_success() == false:
 		#return
 #
 	#if hexCollisionsNode._player_hit_goal(currCharPosX, currCharPosY):
 		#stopGame = true
 #
-	#_update_char_move()
+	_update_chars_move()
 	pass
 
 func _initial_chars_pos() -> void:
@@ -147,33 +147,54 @@ func _char_input_action() -> void:
 	prevCharTeam2MeleePosX = currCharTeam2MeleePosX
 	prevCharTeam2MeleePosY = currCharTeam2MeleePosY
 
-	if (mouseControls.is_released == false) && (mouseControls.relativePosArr.size() != 0):
+	if (mouseControls.is_released == true) && (mouseControls.relativePosArr.size() != 0):
 		if mouseControls._mouse_valid_selection_team1_aoe() == true:
-			pass
+			currCharTeam1AOEPosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam1AOEPosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
 
-func _move_direction(_dirVal : String, _yOdd : bool) -> Vector2i:
-	var relativePosInts : Vector2i
-	if _dirVal == "NW":
-		if _yOdd == true:
-			relativePosInts.x = -1
-		relativePosInts.y = -1
-	elif _dirVal == "NE":
-		if _yOdd == false:
-			relativePosInts.x = 1
-		relativePosInts.y = -1
-	elif _dirVal == "E":
-		relativePosInts.x = 1
-	elif _dirVal == "SE":
-		if _yOdd == false:
-			relativePosInts.x = 1
-		relativePosInts.y = 1
-	elif _dirVal == "SW":
-		if _yOdd == true:
-			relativePosInts.x = -1
-		relativePosInts.y = 1
-	elif _dirVal == "W":
-		relativePosInts.x = -1
-	return relativePosInts
+		if mouseControls._mouse_valid_selection_team2_aoe() == true:
+			currCharTeam2AOEPosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam2AOEPosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
+
+		if mouseControls._mouse_valid_selection_team1_archer() == true:
+			currCharTeam1ArcherPosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam1ArcherPosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
+
+		if mouseControls._mouse_valid_selection_team2_archer() == true:
+			currCharTeam2ArcherPosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam2ArcherPosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
+
+		if mouseControls._mouse_valid_selection_team1_melee() == true:
+			currCharTeam1MeleePosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam1MeleePosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
+
+		if mouseControls._mouse_valid_selection_team2_melee() == true:
+			currCharTeam2MeleePosX = mouseControls.draggedPosXArr[mouseControls.draggedPosXArr.size() - 1]
+			currCharTeam2MeleePosY = mouseControls.draggedPosYArr[mouseControls.draggedPosYArr.size() - 1]
+			mouseControls.relativePosArr.clear()
+			mouseControls.draggedPosXArr.clear()
+			mouseControls.draggedPosYArr.clear()
+			resetsMgrNode._reset_path()
 
 #func _check_move_success() -> bool:
 	#if hexCollisionsNode._player_hit_wall(currCharPosX, currCharPosY):
@@ -183,6 +204,21 @@ func _move_direction(_dirVal : String, _yOdd : bool) -> Vector2i:
 		#return false
 	#return true
 
-#func _update_char_move() -> void:
-	#hexGenNode.playerNode.position.x = hexCalculationsNode._hex_pos_x(currCharPosX, currCharPosY)
-	#hexGenNode.playerNode.position.y = hexCalculationsNode._hex_pos_y(currCharPosX, currCharPosY)
+func _update_chars_move() -> void:
+	hexGenNode.team1AOENode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam1AOEPosX, currCharTeam1AOEPosY)
+	hexGenNode.team1AOENode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam1AOEPosX, currCharTeam1AOEPosY)
+
+	hexGenNode.team2AOENode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam2AOEPosX, currCharTeam2AOEPosY)
+	hexGenNode.team2AOENode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam2AOEPosX, currCharTeam2AOEPosY)
+
+	hexGenNode.team1ArcherNode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam1ArcherPosX, currCharTeam1AOEPosY)
+	hexGenNode.team1ArcherNode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam1ArcherPosX, currCharTeam1AOEPosY)
+
+	hexGenNode.team2ArcherNode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam2ArcherPosX, currCharTeam2ArcherPosY)
+	hexGenNode.team2ArcherNode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam2ArcherPosX, currCharTeam2ArcherPosY)
+
+	hexGenNode.team1MeleeNode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam1MeleePosX, currCharTeam1AOEPosY)
+	hexGenNode.team1MeleeNode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam1MeleePosX, currCharTeam1AOEPosY)
+
+	hexGenNode.team2MeleeNode.position.x = hexCalculationsNode._hex_pos_x(currCharTeam2MeleePosX, currCharTeam2ArcherPosY)
+	hexGenNode.team2MeleeNode.position.y = hexCalculationsNode._hex_pos_y(currCharTeam2MeleePosX, currCharTeam2ArcherPosY)
