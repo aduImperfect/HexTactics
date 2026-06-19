@@ -35,15 +35,3 @@ func _hex_pos_calc_y(_x : int, _y : int) -> float:
 
 func _xval_calc(_x : int, _y : int) -> float:
 		return _hex_pos_calc_x(_x, _y + 1) - _hex_pos_calc_x(_x, _y)
-
-func _hex_win_to_pos_x(_x : float, _y : float) -> int:
-	return _hex_pos_calc_x_inv(_x, _y)
-
-func _hex_win_to_pos_y(_x : float, _y : float) -> int:
-	return _hex_pos_calc_y_inv(_x, _y)
-
-func _hex_pos_calc_x_inv(_x : float, _y : float) -> int:
-	return int((_x / xMult) - (_y / (2 * xMult)) + (yDiff / (2 * xMult)) - _xOffset)
-
-func _hex_pos_calc_y_inv(_x : float, _y : float) -> int:
-	return int(_y / yMult)

@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://borbunw2cj4en"]
+
+[ext_resource type="Texture2D" uid="uid://k7huuaeey5t3" path="res://Textures/HexTeam2Melee.png" id="1_tj2w1"]
+
+[node name="Team2Melee" type="Node2D" unique_id=708993878]
+
+[node name="Hex2Melee" type="Sprite2D" parent="." unique_id=157165866]
+z_index = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_tj2w1")

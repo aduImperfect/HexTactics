@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dq7b2tua61dfa"]
+
+[ext_resource type="Texture2D" uid="uid://dqmbqbru2e7ek" path="res://Textures/HexTeam1Archer.png" id="1_asa87"]
+
+[node name="Team1Archer" type="Node2D" unique_id=1545632129]
+
+[node name="Hex1Archer" type="Sprite2D" parent="." unique_id=82043435]
+z_index = 2
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_asa87")

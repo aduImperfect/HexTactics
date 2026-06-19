@@ -5,6 +5,6 @@
 [node name="Moved" type="Node2D" unique_id=318192682]
 
 [node name="HexMoved" type="Sprite2D" parent="." unique_id=11406702]
-z_index = -5
+z_index = -2
 scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_mrr8q")

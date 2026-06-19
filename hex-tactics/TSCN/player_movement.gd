@@ -14,41 +14,38 @@ extends Node2D
 
 @export var stopGameOnGoalReached : bool = false
 
-@export var maxMoveLimit : int = 3
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	prevPlayerPosX = 0
 	prevPlayerPosY = 0
 	currPlayerPosX = 0
 	currPlayerPosY = 0
-	maxMoveLimit = 3
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if initialPlayerPosSet == false:
-		_initial_player_pos()
-		initialPlayerPosSet = true
-
-	if stopGameOnGoalReached == true:
-		return
-
-	_player_input_action()
-	
-	if _check_move_success() == false:
-		return
-
-	if hexCollisionsNode._player_hit_goal(currPlayerPosX, currPlayerPosY):
-		stopGameOnGoalReached = true
-
-	_update_player_move()
+	#if initialPlayerPosSet == false:
+		#_initial_player_pos()
+		#initialPlayerPosSet = true
+#
+	#if stopGameOnGoalReached == true:
+		#return
+#
+	#_player_input_action()
+	#
+	#if _check_move_success() == false:
+		#return
+#
+	#if hexCollisionsNode._player_hit_goal(currPlayerPosX, currPlayerPosY):
+		#stopGameOnGoalReached = true
+#
+	#_update_player_move()
+	pass
 
 func _initial_player_pos() -> void:
 	prevPlayerPosX = hexGenNode.playerPosX
 	prevPlayerPosY = hexGenNode.playerPosY
 	currPlayerPosX = hexGenNode.playerPosX
 	currPlayerPosY = hexGenNode.playerPosY
-	maxMoveLimit = 3
 
 func _player_input_action() -> void:
 	prevPlayerPosX = currPlayerPosX
